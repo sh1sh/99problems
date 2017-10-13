@@ -1,4 +1,5 @@
 import pygame, sys
+from rocket import Rocket
 
 class Game(object):
 
@@ -11,6 +12,8 @@ class Game(object):
         self.screen = pygame.display.set_mode((1280,720))
         self.tps_clock = pygame.time.Clock()
         self.tps_delta = 0.0
+
+        self.player = Rocket(self)
 
         while True:
             # Handling events
@@ -34,11 +37,12 @@ class Game(object):
 
 
     def tick(self):
-        # Checking inputs
-        keys = pygame.key.get_pressed()
+        self.player.tick()
+
 
     def draw(self):
-        pygame.draw.rect(self.screen, (0, 150, 255), pygame.Rect(10,10,50,50))
+        self.player.draw()
+
 
 
 if __name__ == '__main__':
