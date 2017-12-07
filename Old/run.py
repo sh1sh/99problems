@@ -1,5 +1,9 @@
-import pygame, sys
-from rocket import Rocket
+import pygame
+import sys
+from background import Background
+
+from Old.rocket import Rocket
+
 
 class Game(object):
 
@@ -14,6 +18,7 @@ class Game(object):
         self.tps_delta = 0.0
 
         self.player = Rocket(self)
+        self.backgroung = Background(self)
 
         while True:
             # Handling events
@@ -32,16 +37,19 @@ class Game(object):
             # Drawing
             self.screen.fill((0, 0, 0))
             self.draw()
+            #self.backgroung.draw()
             pygame.display.flip()
 
 
 
     def tick(self):
         self.player.tick()
+        self.backgroung.tick()
 
 
     def draw(self):
         self.player.draw()
+        self.backgroung.draw()
 
 
 
